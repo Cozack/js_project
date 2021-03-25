@@ -234,3 +234,79 @@ console.log(typeof c);*/
 10 !== 10 -> false
 123 === '123' -> false
 123 == '123' -> true*/
+
+
+// 1. Три різних числа вводяться через prompt().
+//     За допомоги if else вивести іх в порядку зростання. (відсортувати по зростанню)
+/*let a = prompt('enter first number');
+let b = prompt('enter second number');
+let c = prompt('enter third number');
+if (a > b && a > c && b > c) {
+    console.log(c, b, a);
+} else if (a > b && a > c && b < c) {
+    console.log(b, c, a);}
+else
+    if (b > a && b > c && a > c) {
+        console.log(c, a, b);}
+else
+    if (b > a && b > c && a < c) {
+            console.log(a, c, b);
+        }
+else if (c > a && c > b && b > a){
+        console.log(a, b, c);
+}
+
+else (c > a && c > b && b < a)
+    console.log(b, a, c);*/
+
+// 2.
+// Все параматры получаем с клавиатуры!!!!
+//     Имитируем поведение пешехода на перекстке.
+//     Если светофор зеленый - вывести "иди".
+//     Если светофор желтый - вывести "подожди".
+//     Если светофор красный - вывести "стой".
+//     Если светофор в аварийном режиме вывести "делай что хочешь"!
+
+/*
+let light  = prompt("Enter the color of the traffic lights");
+if (light === 'green'){
+    console.log('Go');
+}
+else if (light === 'red'){
+    console.log('STOP');
+}
+else if (light === 'yellow'){
+    console.log('Wait');
+}
+else {
+    console.log('Do all that u want');
+}*/
+
+// 3
+// Все параметры получаем с клавиатуры!!!!(prompt , confirm)
+// Создать переменную isRoadClear которая характеризирует наличие на дороге машин.
+//     Улучшаем предыдущее задание.
+//     Если светофор зеленый и машин нет - вывести "иди".
+//     Если светофор зеленый и машины есть  - вывести подожди пока нарушители проедут".
+// Если светофор желтый и машины есть - вывести "жди".
+//     Если светофор желтый и машин нет - вывести "все рано жди".
+//     Если светофор красный и машин нет- вывести "стой все рано".
+//     Если светофор красный - и машины есть вывести "стой и жди".
+//     Если светофор в аварийном режиме вывести "делай что хочешь"!
+
+/*
+let message = prompt('Enter the color of the traffic lights');
+let confirmation = confirm('Is there any car?');
+if (message === 'green' && confirmation === false){
+    console.log(Go);
+}else if (message === 'green' && confirmation === true){
+    console.log('wait until the violators pass');
+}else if (message === 'yellow' && confirmation === true){
+    console.log('Wait');
+}else if (message === 'yellow' && confirmation === false){
+    console.log('Wait anyway');
+}else if (message === 'red' && confirmation === false){
+    console.log('Stop anyway');
+}else {
+    console.log('Do what do u want');
+}*/
