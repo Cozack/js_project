@@ -238,7 +238,7 @@ console.log(typeof c);*/
 
 // 1. Три різних числа вводяться через prompt().
 //     За допомоги if else вивести іх в порядку зростання. (відсортувати по зростанню)
-/*let a = prompt('enter first number');
+let a = prompt('enter first number');
 let b = prompt('enter second number');
 let c = prompt('enter third number');
 if (a > b && a > c && b > c) {
@@ -256,8 +256,8 @@ else if (c > a && c > b && b > a){
         console.log(a, b, c);
 }
 
-else (c > a && c > b && b < a)
-    console.log(b, a, c);*/
+else if (c > a && c > b && b < a){
+    console.log(b, a, c);}
 
 // 2.
 // Все параматры получаем с клавиатуры!!!!
