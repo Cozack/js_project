@@ -231,16 +231,17 @@ console.log(newArrReturn);
 // створити функцію  яка скаладає значення елементів з однаковими індексами  та повертає новий результуючий масив.
 
 
-/*function twoMassives (first,second){
 let newMass = [];
-newMass.push(first[0]+second[0]);
-newMass.push(first[1]+second[1]);
-newMass.push(first[2]+second[2]);
-newMass.push(first[3]+second[3]);
-return newMass
+function twoMassives (first,second){
+
+    for (let i = 0; i < first.length; i++)
+        newMass.push(first[i]+ second[i]);
+        return newMass
+
+
 }
-let returnNewMass = twoMassives([1,2,3,4],[2,3,4,5]);
-console.log(returnNewMass);*/
+let returnNewMass = twoMassives([4,2,3,4],[2,3,4,5]);
+console.log(returnNewMass);
 
 
 /*
