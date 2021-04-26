@@ -98,40 +98,18 @@
 // Данные вводить через соответсвующую форму.
 // --Каждому контакту добавить кнопку для удаления контакта.
 // --Каждому контакту добавить кнопку редактироваиня. При нажати на нее появляется форма, в которой есть все необходимые инпуты для редактирования, которые уже заполнены данными объекта
-const ARRAY_USERS = "ARRAY USERS"
-let tempUser = {};
+const USERS = "USERS"
+let temp = {};
 const content = document.getElementById('content');
 const forma = document.forms.someForm;
-// const leftButton = document.getElementById('left');
-// const rightButton = document.getElementById('right');
+const saveBtn = document.getElementById('saveBtn')
 
-/*let user = {}
-saveButton.onclick = ()=>{
-
-    for (let i = 0; i < forma.length; i++) {
-        const argument = forma[i];
-        user[argument.name] =argument.value
-    }
-   user.key = Math.floor(Math.random()*100)
-    let strUsers = JSON.stringify(user)
-    localStorage.setItem(user.key,strUsers)
-}
-saveButton.onclick = ()=>{
-
-    for (let i = 0; i < forma.length; i++) {
-        const argument = forma[i];
-        user[argument.name] =argument.value
-    }
-    let strUsers = JSON.stringify(user)
-}*/
-
-forma.submit.onclick = ev => {
-    // ev.preventDefault()
-    let person = {...tempUser}
-    tempUser = {}
+forma.saveBtn.onclick = ev => {
+    let person = {...temp}
+    temp = {}
     for (let i = 0; i < forma.length; i++) {
         const formaElement = forma[i];
-        if (formaElement.name && formaElement.type !== 'submit'){
+        if (formaElement.name && formaElement.type !== 'button'){
 person[formaElement.name]= formaElement.value}
     }
     if (!person.key){
@@ -142,73 +120,65 @@ person[formaElement.name]= formaElement.value}
 
 getDataFromlC()
 function saveUser(user){
-    if (localStorage.hasOwnProperty(ARRAY_USERS)) {
-        const arrayUsers = JSON.parse(localStorage.getItem(ARRAY_USERS))
+    if (localStorage.hasOwnProperty(USERS)) {
+        const arrayUsers = JSON.parse(localStorage.getItem(USERS))
         const find = arrayUsers.find(value => value.key === user.key);
         if (find) {
 
             const filter = arrayUsers.filter(value => value.key !== user.key);
             filter.push(user)
-            localStorage.setItem(ARRAY_USERS, JSON.stringify(filter));
+            localStorage.setItem(USERS, JSON.stringify(filter));
         } else {
             arrayUsers.push(user)
-            localStorage.setItem(ARRAY_USERS, JSON.stringify(arrayUsers));
+            localStorage.setItem(USERS, JSON.stringify(arrayUsers));
         }
     }else{
-        localStorage.setItem(ARRAY_USERS,JSON.stringify([user]))
+        localStorage.setItem(USERS,JSON.stringify([user]))
     }
 }
 
 function getDataFromlC (){
-    if (localStorage.hasOwnProperty(ARRAY_USERS)){
-        const arrUser = JSON.parse(localStorage.getItem(ARRAY_USERS))
+    if (localStorage.hasOwnProperty(USERS)){
+        const arrUser = JSON.parse(localStorage.getItem(USERS))
         for (const user of arrUser) {
-            content.appendChild(createDiv(user))
+            content.appendChild(divka(user))
         }
     }
 }
 
-function createDiv(user){
+function divka(user){
  const main =    document.createElement('div');
- let flag = true;
     for (const keys in user) {
-        if (flag){
-            const h3 = document.createElement('h3');
-            h3.innerText = keys + ' : ' + user[keys];
-            main.appendChild((h3));
-            flag=false;
-        }else{
             const p = document.createElement('p');
             p.innerText = keys + ' : ' + user[keys];
-            main.appendChild(p);
-        }
+            main.appendChild((p));
 
     }
-    main.style = 'width : 300px; border: 2px solid green; float: left';
+    main.style = 'width : 250px;  padding:20px; float: left; border:1px solid red; '
     const leftButton = document.createElement('button');
     const rightButton = document.createElement('button');
     leftButton.innerText = 'edit';
     rightButton.innerText = 'delete';
    leftButton.onclick = function (){
-       editUser(user.key)
+       changeUser(user.key)
    }
     rightButton.onclick = function (){
-        deleteUser(user.key)
+        removeUser(user.key)
    }
     main.appendChild(leftButton)
     main.appendChild(rightButton)
     return main
 }
 
-function deleteUser(key){
-   const parse =  JSON.parse(localStorage.getItem(ARRAY_USERS))
+function removeUser(key){
+   const parse =  JSON.parse(localStorage.getItem(USERS))
    const filter = parse.filter = parse.filter (user =>user.key !== key);
-   localStorage.setItem(ARRAY_USERS,JSON.stringify(filter));
+   localStorage.setItem(USERS,JSON.stringify(filter));
    location.reload()
 }
-function editUser(key){
-   const parse =  JSON.parse(localStorage.getItem(ARRAY_USERS))
-   const user = parse.find(user =>user.key === key);
+function changeUser(key){
+   const parseIt =  JSON.parse(localStorage.getItem(USERS))
+   const user = parseIt.find(user =>user.key === key);
     for (let i = 0; i < forma.length; i++) {
         const formaElement = forma[i];
         if (formaElement.name && formaElement.type !== 'submit'){
